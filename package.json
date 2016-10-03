@@ -2,7 +2,7 @@
     "name": "vcterminal",
     "displayName": "vcterminal",
     "description": "Open Integrated Terminal with Visual Studio toolchain PATH environment variables.",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "publisher": "espresso3389",
     "engines": {
         "vscode": "^1.5.0"
