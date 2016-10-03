@@ -10,6 +10,22 @@
     "categories": [
         "Other"
     ],
+    "keywords": [
+        "vcvarsall.bat",
+        "vcvars32.bat",
+        "cmd.exe",
+        "cl.exe"
+    ],
+    "icon": "vcterminal.png",
+    "license": "SEE LICENSE IN LICENSE.md",
+    "bugs": {
+        "url": "https://github.com/espresso3389/vcterminal-vscode/issues"
+    },
+    "homepage": "https://github.com/espresso3389/vcterminal-vscode",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/espresso3389/vcterminal-vscode.git"
+    },
     "activationEvents": [
         "onCommand:terminalVcVers.createBashShell",
         "onCommand:terminalVcVers.createVsCmdPrompt"

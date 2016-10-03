@@ -7,9 +7,25 @@ import * as vscode from 'vscode';
 export function activate(context: vscode.ExtensionContext) {
     let terminalStacks = new Map<string, vscode.Terminal[]>();
 
+    let shell = (vscode.workspace.getConfiguration().get('terminal.integrated.shell.windows') as string).toLowerCase();
+    let system32;
+    if (shell == "c:\\windows\\system32\\cmd.exe")
+    {
+        system32 = 'sysnative';
+    }
+    else if (shell == "c:\\windows\\sysnative\\cmd.exe")
+    {
+        system32 = 'system32';
+    }
+    else
+    {
+        vscode.window.showErrorMessage('terminal.integrated.shell.windows should not be changed from it\'s default value.');
+        return;
+    }
+
     context.subscriptions.push(vscode.commands.registerCommand('terminalVcVers.createBashShell', () => {
 
-        showTerminal('c:\\Windows\\Sysnative\\bash.exe', 'bash');
+        showTerminal('c:\\Windows\\' + system32 + '\\bash.exe', 'bash');
     }));
     context.subscriptions.push(vscode.commands.registerCommand('terminalVcVers.createVsCmdPrompt', () => {
         let commands = new Map<string,string>();
@@ -42,7 +58,7 @@ export function activate(context: vscode.ExtensionContext) {
         if (!terms)
             terminalStacks[caption] = terms = [];
 
-        var term = vscode.window.createTerminal(`${caption} #${terms.length + 1}`);
+        let term = vscode.window.createTerminal(`${caption} #${terms.length + 1}`);
         if (cmd)
         {
             let dir = vscode.window.activeTextEditor ? path.dirname(vscode.window.activeTextEditor.document.fileName) : null;
