@@ -36,7 +36,9 @@ export function activate(context: vscode.ExtensionContext) {
             '140': 'VS2015'};
         for (let vsver in vsvers) {
             let vstooldir = process.env['VS' + vsver + 'COMNTOOLS'];
-            let vcvarsall = vstooldir + '..\\..\\VC\\vcvarsall.bat';
+            if (!vstooldir)
+                continue;
+            let vcvarsall = path.join(vstooldir, '..\\..\\VC\\vcvarsall.bat');
             if (fs.existsSync(vcvarsall)) {
                 for (let arch of ['x86', 'amd64'])
                     commands.set(`VS${vsver} (${arch})`, `"${vcvarsall}" ${arch}`);

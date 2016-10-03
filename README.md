@@ -14,12 +14,15 @@ This will open `Bash on Ubuntu on Windows` on integrated terminal.
 
 ## Known Issues
 
-- It cannot run on Mac
-Of course, the extension run only on Windows! :(
-- When you exit bash, it returns to cmd.exe
+### It cannot run on Mac
+Of course, the extension runs only on Windows! :(
+
+### When you exit bash, it returns to cmd.exe
 Currently, we cannot directly launch bash.exe from Visual Studio Code environment.
-This is an API restriction now and 
-- If you change `terminal.integrated.shell.windows` on your `settings.json`,
+This is an API restriction now. 
+
+### Integrated Terminal Restriction
+If you change `terminal.integrated.shell.windows` on your `settings.json`,
 the extension may not work.
 The extension assumes that the value is one of the following variations:
 ```
