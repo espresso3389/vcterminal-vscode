@@ -12,12 +12,10 @@
     ],
     "keywords": [
         "vcvarsall.bat",
-        "vcvars32.bat",
         "cmd.exe",
         "cl.exe",
         "ubuntu",
-        "bash",
-        "WSL"
+        "bash"
     ],
     "icon": "vcterminal.png",
     "license": "SEE LICENSE IN LICENSE.md",
