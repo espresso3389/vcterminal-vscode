@@ -29,20 +29,12 @@ export function activate(context: vscode.ExtensionContext) {
     }));
     context.subscriptions.push(vscode.commands.registerCommand('terminalVcVers.createVsCmdPrompt', () => {
         let commands = new Map<string,string>();
-        let vsvers = {
-            '100': 'VS2010',
-            '110': 'VS2012',
-            '120': 'VS2013',
-            '140': 'VS2015',
-            '150': 'VS2017'};
-        for (let vsver in vsvers) {
-            let vstooldir = process.env['VS' + vsver + 'COMNTOOLS'];
-            if (!vstooldir)
-                continue;
-            let vcvarsall = path.join(vstooldir, '..\\..\\VC\\vcvarsall.bat');
+        for (let vs of vsEditions()) {
+            let vcvarsall = vs[0];
+            let vsname = vs[1];
             if (fs.existsSync(vcvarsall)) {
                 for (let arch of ['x86', 'amd64'])
-                    commands.set(`VS${vsver} (${arch})`, `"${vcvarsall}" ${arch}`);
+                    commands.set(`${vsname} (${arch})`, `"${vcvarsall}" ${arch}`);
             }
         }
         if (commands.size == 0)
@@ -55,6 +47,30 @@ export function activate(context: vscode.ExtensionContext) {
             .showQuickPick(Array.from(commands.keys()), {　placeHolder: "Select VS version to show command prompt:"　})
             .then(n => showCmd64(commands.get(n), n));
     }));
+
+    function *vsEditions(): Iterable<[string, string]> {
+        let vsvers = {'100': '2010', '110': '2012', '120': '2013', '140': '2015'};
+        for (let vsver in vsvers) {
+            let vstooldir = process.env['VS' + vsver + 'COMNTOOLS'];
+            let vsname = 'VS' + vsvers[vsver];
+            if (vstooldir) {
+                let vcvarsall = path.join(vstooldir, '..\\..\\VC\\vcvarsall.bat');
+                yield [vcvarsall, 'VS' + vsvers[vsver]];
+            }
+        }
+
+        // FIXME: hardcoded path for new Visual Studio versions/editions.
+        let vsvers2 = ['2017'];
+        let editions = ['Community', 'Professional', 'Enterprise'];
+        for (let i = 0; i < vsvers2.length; i++) {
+            let v = vsvers2[i];
+            let vsdirRoot = path.join(process.env['ProgramFiles(x86)'], 'Microsoft Visual Studio', v);
+            for (let j = 0; j < editions.length; j++) {
+                let ed = editions[j];
+                yield [path.join(vsdirRoot, ed, 'VC\\Auxiliary\\Build\\vcvarsall.bat'), 'VS ' + ed + ' ' + v];
+            }
+        }
+    }
 
     function showTerminal(cmd: string, caption: string) {
         let terms = terminalStacks[caption];
