@@ -81,6 +81,8 @@ export function activate(context: vscode.ExtensionContext) {
     }
 
     function showCmd64(cmd: string, caption: string) {
+        if (!cmd)
+            return;
         showTerminal('call ' + cmd, caption);
     }
 
