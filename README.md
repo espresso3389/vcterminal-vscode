@@ -4,13 +4,15 @@
 
 This is a Visual Studio Code extension, which enables Windows users to open Integrated Terminal with Visual Studio Tools. It is enabled by utilizing vcvarsall.bat on Visual C++ installation.
 
-This extension supports two terminal variants:
+It also support Bash on Ubuntu on Windows (WSL) invocation without modifying integrated terminal configuration.
 
-### Visual Studio Command Prompt
+## Visual Studio Command Prompt
 
 You can select a Visual Studio version upon opening Visual Studio Command Prompt.
 
-### Bash on Ubuntu on Windows
+Currently, it supports VS2010, VS2012, VS2013, VS2015, and VS2017.
+
+## Bash on Ubuntu on Windows (WSL)
 
 This will open `Bash on Ubuntu on Windows` on integrated terminal.
 

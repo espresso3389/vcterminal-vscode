@@ -1,8 +1,8 @@
 {
     "name": "vcterminal",
     "displayName": "vcterminal",
-    "description": "Open Integrated Terminal with Visual Studio toolchain PATH environment variables.",
-    "version": "0.0.6",
+    "description": "Open Integrated Terminal for Visual Studio toolchain/Ubuntu Bash",
+    "version": "0.0.7",
     "publisher": "espresso3389",
     "engines": {
         "vscode": "^1.5.0"
@@ -14,7 +14,10 @@
         "vcvarsall.bat",
         "vcvars32.bat",
         "cmd.exe",
-        "cl.exe"
+        "cl.exe",
+        "ubuntu",
+        "bash",
+        "WSL"
     ],
     "icon": "vcterminal.png",
     "license": "SEE LICENSE IN LICENSE.md",
