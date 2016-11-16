@@ -33,7 +33,8 @@ export function activate(context: vscode.ExtensionContext) {
             '100': 'VS2010',
             '110': 'VS2012',
             '120': 'VS2013',
-            '140': 'VS2015'};
+            '140': 'VS2015',
+            '150': 'VS2017'};
         for (let vsver in vsvers) {
             let vstooldir = process.env['VS' + vsver + 'COMNTOOLS'];
             if (!vstooldir)
