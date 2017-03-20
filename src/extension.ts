@@ -8,18 +8,12 @@ export function activate(context: vscode.ExtensionContext) {
     let terminalStacks = new Map<string, vscode.Terminal[]>();
 
     let shell = (vscode.workspace.getConfiguration().get('terminal.integrated.shell.windows') as string).toLowerCase();
-    let system32;
-    if (shell == "c:\\windows\\system32\\cmd.exe")
+    let system32 = 'system32'; //shell.indexOf("sysnative") > 0 ? 'sysnative' : 'system32';
+    let isPowershell = shell.indexOf("powershell.exe") > 0;
+    let isCmdExe = shell.indexOf("cmd.exe") > 0;
+    if (!isPowershell && !isCmdExe)
     {
-        system32 = 'sysnative';
-    }
-    else if (shell == "c:\\windows\\sysnative\\cmd.exe")
-    {
-        system32 = 'system32';
-    }
-    else
-    {
-        vscode.window.showErrorMessage('terminal.integrated.shell.windows should not be changed from it\'s default value.');
+        vscode.window.showErrorMessage('Could not determine shell type. It should be either cmd.exe or powershell.exe in system32 or sysnative directory.');
         return;
     }
 
@@ -94,12 +88,16 @@ export function activate(context: vscode.ExtensionContext) {
             term.sendText(cmd);
         }
         term.show();
+        return term;
     }
 
     function showCmd64(cmd: string, caption: string) {
         if (!cmd)
             return;
-        showTerminal('call ' + cmd, caption);
+        if (isCmdExe)
+            showTerminal('call ' + cmd, caption);
+        else
+            showTerminal('c:\\Windows\\' + system32 + '\\cmd.exe /K ' + cmd, caption);
     }
 
     function getDrive(fn: string): string {
