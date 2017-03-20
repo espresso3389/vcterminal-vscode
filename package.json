@@ -2,7 +2,7 @@
     "name": "vcterminal",
     "displayName": "vcterminal",
     "description": "Open Integrated Terminal for Visual Studio toolchain/Ubuntu Bash",
-    "version": "0.0.7",
+    "version": "0.0.8",
     "publisher": "espresso3389",
     "engines": {
         "vscode": "^1.5.0"
