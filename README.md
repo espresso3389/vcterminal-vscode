@@ -21,19 +21,6 @@ This will open `Bash on Ubuntu on Windows` on integrated terminal.
 ### It cannot run on Mac
 Of course, the extension runs only on Windows! :(
 
-### When you exit bash, it returns to cmd.exe
-Currently, we cannot directly launch bash.exe from Visual Studio Code environment.
-This is an API restriction now. 
-
-### Integrated Terminal Restriction
-If you change `terminal.integrated.shell.windows` on your `settings.json`,
-the extension may not work.
-The extension assumes that the value is one of the following variations:
-```
-C:\\WINDOWS\\system32\\cmd.exe
-C:\\WINDOWS\\sysnative\\cmd.exe
-```
-
 ## GitHub URL
 https://github.com/espresso3389/vcterminal-vscode
 
