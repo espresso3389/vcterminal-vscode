@@ -10,7 +10,7 @@ It also support Bash on Ubuntu on Windows (WSL) invocation without modifying int
 
 You can select a Visual Studio version upon opening Visual Studio Command Prompt.
 
-Currently, it supports VS2010, VS2012, VS2013, VS2015, and VS2017.
+Currently, it supports VS2010, VS2012, VS2013, VS2015, VS2017, and VS15.3 (Preview).
 
 ## Bash on Ubuntu on Windows (WSL)
 
