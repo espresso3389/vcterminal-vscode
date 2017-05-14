@@ -54,14 +54,14 @@ export function activate(context: vscode.ExtensionContext) {
         }
 
         // FIXME: hardcoded path for new Visual Studio versions/editions.
-        let vsvers2 = ['2017'];
+        let vsvers2 = ['2017', 'Preview'];
         let editions = ['Community', 'Professional', 'Enterprise'];
         for (let i = 0; i < vsvers2.length; i++) {
             let v = vsvers2[i];
             let vsdirRoot = path.join(process.env['ProgramFiles(x86)'], 'Microsoft Visual Studio', v);
             for (let j = 0; j < editions.length; j++) {
                 let ed = editions[j];
-                yield [path.join(vsdirRoot, ed, 'VC\\Auxiliary\\Build\\vcvarsall.bat'), 'VS ' + ed + ' ' + v];
+                yield [path.join(vsdirRoot, ed, 'VC\\Auxiliary\\Build\\vcvarsall.bat'), 'VS' + v + ' ' + ed];
             }
         }
     }
