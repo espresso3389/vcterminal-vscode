@@ -11,14 +11,14 @@ export function activate(context: vscode.ExtensionContext) {
     let system32 = 'system32'; //shell.indexOf("sysnative") > 0 ? 'sysnative' : 'system32';
     let isPowershell = shell.indexOf("powershell.exe") > 0;
     let isCmdExe = shell.indexOf("cmd.exe") > 0;
-    if (!isPowershell && !isCmdExe)
+    let isWslBash = shell.indexOf("bash.exe") > 0;
+    if (!isPowershell && !isCmdExe && !isWslBash)
     {
         vscode.window.showErrorMessage('Could not determine shell type. It should be either cmd.exe or powershell.exe in system32 or sysnative directory.');
         return;
     }
 
     context.subscriptions.push(vscode.commands.registerCommand('terminalVcVers.createBashShell', () => {
-
         showTerminal('c:\\Windows\\' + system32 + '\\bash.exe', 'bash');
     }));
     context.subscriptions.push(vscode.commands.registerCommand('terminalVcVers.createVsCmdPrompt', () => {
@@ -96,8 +96,10 @@ export function activate(context: vscode.ExtensionContext) {
             return;
         if (isCmdExe)
             showTerminal('call ' + cmd, caption);
-        else
+        else if (isPowershell)
             showTerminal('c:\\Windows\\' + system32 + '\\cmd.exe /K ' + cmd, caption);
+        else if (isWslBash)
+            showTerminal('/mnt/c/Windows/System32/cmd.exe /K ' + cmd, caption);
     }
 
     function getDrive(fn: string): string {
