@@ -33,14 +33,16 @@
     ],
     "main": "./out/src/extension",
     "contributes": {
-        "commands": [{
-            "command": "terminalVcVers.createBashShell",
-            "title": "Bash on Ubuntu on Windows"
-        },
-        {
-            "command": "terminalVcVers.createVsCmdPrompt",
-            "title": "Visual Studio Command Prompt"
-        }]
+        "commands": [
+            {
+                "command": "terminalVcVers.createBashShell",
+                "title": "Bash on Ubuntu on Windows"
+            },
+            {
+                "command": "terminalVcVers.createVsCmdPrompt",
+                "title": "Visual Studio Command Prompt"
+            }
+        ]
     },
     "scripts": {
         "vscode:prepublish": "tsc -p ./",
