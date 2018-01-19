@@ -43,7 +43,7 @@ export function activate(context: vscode.ExtensionContext) {
     }));
 
     function *vsEditions(): Iterable<[string, string]> {
-        let vsvers = {'100': '2010', '110': '2012', '120': '2013', '140': '2015'};
+        let vsvers = {'90': '2008', '100': '2010', '110': '2012', '120': '2013', '140': '2015'};
         for (let vsver in vsvers) {
             let vstooldir = process.env['VS' + vsver + 'COMNTOOLS'];
             let vsname = 'VS' + vsvers[vsver];
