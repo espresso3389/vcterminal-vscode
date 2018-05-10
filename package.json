@@ -50,11 +50,11 @@
         "postinstall": "node ./node_modules/vscode/bin/install"
     },
     "devDependencies": {
-        "typescript": "^2.6.2",
-        "vscode": "^1.1.10",
-        "mocha": "^5.0.0",
-        "@types/node": "^9.3.0",
-        "@types/mocha": "^2.2.46",
-        "vsce": "^1.35.0"
+        "typescript": "^2.8.3",
+        "vscode": "^1.1.17",
+        "mocha": "^5.1.1",
+        "@types/node": "^10.0.6",
+        "@types/mocha": "^5.2.0",
+        "vsce": "^1.40.0"
     }
 }
