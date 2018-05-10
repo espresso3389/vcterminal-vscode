@@ -2,7 +2,7 @@
     "name": "vcterminal",
     "displayName": "vcterminal",
     "description": "Open Integrated Terminal for Visual Studio toolchain/Ubuntu Bash",
-    "version": "1.0.28",
+    "version": "1.0.30",
     "publisher": "espresso3389",
     "engines": {
         "vscode": "^1.17.0"
@@ -35,10 +35,6 @@
     "contributes": {
         "commands": [
             {
-                "command": "terminalVcVers.createBashShell",
-                "title": "Bash on Ubuntu on Windows"
-            },
-            {
                 "command": "terminalVcVers.createVsCmdPrompt",
                 "title": "Visual Studio Command Prompt"
             }
@@ -50,11 +46,11 @@
         "postinstall": "node ./node_modules/vscode/bin/install"
     },
     "devDependencies": {
-        "typescript": "^2.8.3",
-        "vscode": "^1.1.17",
-        "mocha": "^5.1.1",
-        "@types/node": "^10.0.6",
         "@types/mocha": "^5.2.0",
-        "vsce": "^1.40.0"
+        "@types/node": "^10.0.6",
+        "mocha": "^5.1.1",
+        "typescript": "^2.8.3",
+        "vsce": "^1.40.0",
+        "vscode": "^1.1.17"
     }
 }

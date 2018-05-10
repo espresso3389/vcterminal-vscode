@@ -12,10 +12,6 @@ You can select a Visual Studio version upon opening Visual Studio Command Prompt
 
 Currently, it supports VS2008, VS2010, VS2012, VS2013, VS2015, VS2017, and VS15 Preview.
 
-## Bash on Ubuntu on Windows (WSL)
-
-This will open `Bash on Ubuntu on Windows` on a new integrated terminal.
-
 ## Known Issues
 
 ### It cannot run on Mac
