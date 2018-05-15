@@ -35,6 +35,10 @@
     "contributes": {
         "commands": [
             {
+                "command": "terminalVcVers.createBashShell",
+                "title": "Bash on Ubuntu on Windows"
+            },
+            {
                 "command": "terminalVcVers.createVsCmdPrompt",
                 "title": "Visual Studio Command Prompt"
             }
